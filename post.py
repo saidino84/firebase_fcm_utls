@@ -5,7 +5,7 @@ import requests as rq
 # server uri
 fcm_server='https://fcm.googleapis.com/fcm/send'
 # [headers]
-auth='key=AAAAQFHnrVQ:APA91bEFAGGIr7pOVAm3g2sNQZfvI9ZlCuQtYq0Toy-gHqEYlA_wybPGls9wrjcoW7FNoyXRqmZi2l5CavXSbxn-yfMkakVba1PaacxJ0REnoYiBMj7DMezx9dKDpitefB0F652V7vy7'
+auth='key=AAAAT7I801w:APA91bFyk0q5leLPRR8YtKy3Q1s1wA38IcLdhZbkXF3ysCY7HdwOZ2IJEMQoaO8t5zKTwE_A8hockdmrL1FgkKkbqfK6FX4eCP5R7o1XLliD-e3OYFY1aruXPxac9rc_x6Dr6ly17nER'
 content_type='application/json'
 headers={
     'Content-Type':'application/json',
@@ -22,7 +22,7 @@ image_url=input('image link')
 if(len(image_url) <10):
     image_url='https://st.depositphotos.com/1063437/2337/i/950/depositphotos_23373292-stock-photo-groceries-in-wicker-basket-including.jpg'
 body={
-    "to":'/topics/all',
+    "to":'/topics/ADMIN',
     "notification":{
         "body":message,
         "title":title,
@@ -38,6 +38,6 @@ body={
 from datetime import datetime,time
 response=rq.post(fcm_server,headers=headers,data=json.dumps(body))
 now=datetime.now().hour
-with open(f'response_{d}.json','w+') as f:
+with open(f'response_{now}.json','w+') as f:
     f.write(response.json())
 print(post.json())
