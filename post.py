@@ -1,7 +1,7 @@
 
 import json
 import requests as rq
-
+api_uri='http://saidinosecondapp.herokuapp.com/spar/postproduct/'
 # server uri
 fcm_server='https://fcm.googleapis.com/fcm/send'
 # [headers]
@@ -18,9 +18,9 @@ mine="dA8SJnyqSGGF5s6mWJ_wp2:APA91bHInq0DgMVL5usx_zCiJXwapXLioqOXnAoGd9Df3WoFyAQ
 # [body]
 message=input('message')
 title =input('title')
-image_url=input('image link')
-if(len(image_url) <10):
-    image_url='https://st.depositphotos.com/1063437/2337/i/950/depositphotos_23373292-stock-photo-groceries-in-wicker-basket-including.jpg'
+# image_url=input('image link')
+# if(len(image_url) <10):
+image_url='https://st.depositphotos.com/1063437/2337/i/950/depositphotos_23373292-stock-photo-groceries-in-wicker-basket-including.jpg'
 body={
     "to":'/topics/ADMIN',
     "notification":{
@@ -39,5 +39,6 @@ from datetime import datetime,time
 response=rq.post(fcm_server,headers=headers,data=json.dumps(body))
 now=datetime.now().hour
 with open(f'response_{now}.json','w+') as f:
-    f.write(response.json())
-print(post.json())
+    f.write('sucessfull')
+# print(post.json())
+print(response.content)
